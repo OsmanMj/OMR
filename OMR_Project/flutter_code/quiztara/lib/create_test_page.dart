@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'test_details_page.dart';
 
 class CreateTestPage extends StatefulWidget {
-  final String userId; // إضافة userId كمعامل
+  final String userId; 
 
   CreateTestPage({required this.userId});
 
@@ -35,14 +35,13 @@ class _CreateTestPageState extends State<CreateTestPage> {
     }
   }
 
-  /// **تحديث استعلام التحقق من اسم الكويز ليشمل `creatorId`.**
   Future<bool> _isTestNameExists(String testName) async {
     final querySnapshot = await _firestore
         .collection('tests')
         .where('quizname', isEqualTo: testName)
         .where('creatorId',
             isEqualTo:
-                widget.userId) // التحقق من اسم الكويز للمستخدم الحالي فقط
+                widget.userId) 
         .get();
     return querySnapshot.docs.isNotEmpty;
   }
@@ -71,13 +70,12 @@ class _CreateTestPageState extends State<CreateTestPage> {
     });
 
     try {
-      // حفظ تفاصيل الاختبار مع userId
       await _firestore.collection('tests').add({
         'quizname': _testNameController.text.trim(),
         'quizdate': _selectedDate,
         'questions': int.parse(_selectedQuestionCount!),
         'created_at': Timestamp.now(),
-        'creatorId': widget.userId, // ربط الاختبار بمعرّف المستخدم
+        'creatorId': widget.userId, 
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -88,7 +86,6 @@ class _CreateTestPageState extends State<CreateTestPage> {
         isLoading = false;
       });
 
-      // الانتقال إلى صفحة تفاصيل الاختبار مع تمرير userId
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
