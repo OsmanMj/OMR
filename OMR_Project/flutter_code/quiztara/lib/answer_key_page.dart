@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'grading_page.dart';
 
 class AnswerKeyPage extends StatefulWidget {
-  final int numQuestions; // عدد الأسئلة
-  final String quizId; // معرف الاختبار لتخزين الإجابات مع الاختبار
-  final String userId; // معرف المستخدم
+  final int numQuestions; 
+  final String quizId; 
+  final String userId;
 
   AnswerKeyPage({
     required this.numQuestions,
@@ -18,7 +18,7 @@ class AnswerKeyPage extends StatefulWidget {
 }
 
 class _AnswerKeyPageState extends State<AnswerKeyPage> {
-  late List<String?> _answers; // قائمة للإجابات
+  late List<String?> _answers; 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   bool isLoading = false;
 
@@ -26,10 +26,9 @@ class _AnswerKeyPageState extends State<AnswerKeyPage> {
   void initState() {
     super.initState();
     _answers =
-        List<String?>.filled(widget.numQuestions, null); // تهيئة قائمة الإجابات
+        List<String?>.filled(widget.numQuestions, null); 
   }
 
-  // حفظ الإجابات في Firestore
   Future<void> _saveAnswers() async {
     if (_answers.contains(null)) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -60,7 +59,7 @@ class _AnswerKeyPageState extends State<AnswerKeyPage> {
 
       await _firestore.collection('tests').doc(widget.quizId).update({
         'answerKey': answerKeys,
-        'updatedBy': widget.userId, // تحديث بواسطة المستخدم الحالي
+        'updatedBy': widget.userId, 
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -77,14 +76,13 @@ class _AnswerKeyPageState extends State<AnswerKeyPage> {
     }
   }
 
-  // الانتقال إلى صفحة GradingPage مع الإجابات
   void _goToGradingPage() {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => GradingPage(
           quizId: widget.quizId,
-          userId: widget.userId, // تمرير userId مع بيانات الاختبار
+          userId: widget.userId, 
         ),
       ),
     );
