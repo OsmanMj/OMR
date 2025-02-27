@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748067755125",
+    "project_id": "quiztara-c8e3b",
+    "storage_bucket": "quiztara-c8e3b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748067755125:android:746c9ce1d393bfe479d43c",
+        "android_client_info": {
+          "package_name": "com.example.quiztara"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0kWpWzPm_G5BPptF9W8wpVCKDRXU9OV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
