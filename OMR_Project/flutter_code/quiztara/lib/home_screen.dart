@@ -4,7 +4,7 @@ import 'test_details_page.dart';
 import 'setting_page.dart';
 
 class HomeScreen extends StatefulWidget {
-  final String userId; // إضافة userId كمعامل
+  final String userId; 
 
   HomeScreen({required this.userId});
 
@@ -20,11 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // تمرير userId إلى الصفحات الفرعية
     _pages = [
-      CreateTestPage(userId: widget.userId), // صفحة إنشاء الاختبارات
-      TestDetailsPage(userId: widget.userId), // صفحة تفاصيل الاختبارات
-      SettingPage(userId: widget.userId), // صفحة الإعدادات
+      CreateTestPage(userId: widget.userId), 
+      TestDetailsPage(userId: widget.userId), 
+      SettingPage(userId: widget.userId),
     ];
   }
 
