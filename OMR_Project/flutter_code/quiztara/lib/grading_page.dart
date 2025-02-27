@@ -29,7 +29,7 @@ class _GradingPageState extends State<GradingPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   List<Map<String, dynamic>> _results = [];
   List<int>? _correctAnswers;
-  final String _serverUrl = "http://192.168.43.74:8000/process_image";
+  final String _serverUrl = ""; //  here add you loclal ip and then after ip/process_image
   TextEditingController _studentNameController = TextEditingController();
 
   @override
