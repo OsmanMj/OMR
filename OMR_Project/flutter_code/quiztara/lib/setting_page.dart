@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SettingPage extends StatefulWidget {
-  final String userId; // معرف المستخدم
+  final String userId; 
 
   SettingPage({required this.userId});
 
@@ -13,7 +13,6 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // تسجيل الخروج
   void _logout() {
     showDialog(
       context: context,
@@ -24,7 +23,7 @@ class _SettingPageState extends State<SettingPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // إغلاق الحوار
+                Navigator.pop(context); 
               },
               child: Text('iptal'),
             ),
@@ -34,7 +33,7 @@ class _SettingPageState extends State<SettingPage> {
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   '/login',
-                  (route) => false, // إزالة جميع الصفحات السابقة
+                  (route) => false, 
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Başarıyla çıkış yapıldı.')),
@@ -51,7 +50,6 @@ class _SettingPageState extends State<SettingPage> {
     );
   }
 
-  // عرض معلومات عن التطبيق
   void _showAboutDialog() {
     showDialog(
       context: context,
@@ -75,7 +73,6 @@ class _SettingPageState extends State<SettingPage> {
     );
   }
 
-  // عرض تعليمات الاستخدام
   void _showInstructionsDialog() {
     showDialog(
       context: context,
@@ -125,7 +122,6 @@ class _SettingPageState extends State<SettingPage> {
           ),
           Divider(),
 
-          // قسم Hakkında
           ListTile(
             title: Text('Hakkında'),
             leading: Icon(
@@ -136,7 +132,6 @@ class _SettingPageState extends State<SettingPage> {
           ),
           Divider(),
 
-          // قسم Kullanım Talimatları
           ListTile(
             title: Text('Kullanım Talimatları'),
             leading: Icon(
@@ -147,7 +142,6 @@ class _SettingPageState extends State<SettingPage> {
           ),
           Divider(),
 
-          // قسم إضافي لعرض معرف المستخدم
           ListTile(
             title: Text('Kullanıcı ID'),
             subtitle: Text(widget.userId),
