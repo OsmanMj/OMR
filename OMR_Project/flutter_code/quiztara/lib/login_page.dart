@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:convert';
-import 'package:crypto/crypto.dart'; // استيراد مكتبة التشفير
+import 'package:crypto/crypto.dart'; 
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,14 +15,12 @@ class _LoginPageState extends State<LoginPage> {
   String? errorMessage;
   bool isLoading = false;
 
-  // دالة لتشفير كلمة المرور
   String _encryptPassword(String password) {
-    final bytes = utf8.encode(password); // تحويل النص إلى بايت
-    final hashed = sha256.convert(bytes); // تطبيق SHA-256
+    final bytes = utf8.encode(password); 
+    final hashed = sha256.convert(bytes); 
     return hashed.toString();
   }
 
-  // وظيفة تسجيل الدخول
   Future<void> _loginUser() async {
     if (_usernameController.text.isEmpty || _passwordController.text.isEmpty) {
       setState(() {
@@ -44,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
       if (result.docs.isNotEmpty) {
         var userDoc = result.docs.first.data() as Map<String, dynamic>;
         final encryptedInputPassword = _encryptPassword(
-            _passwordController.text.trim()); // تشفير كلمة المرور المدخلة
+            _passwordController.text.trim()); 
 
         if (userDoc['password'] == encryptedInputPassword) {
           setState(() {
@@ -52,7 +50,6 @@ class _LoginPageState extends State<LoginPage> {
             isLoading = false;
           });
 
-          // الانتقال إلى الصفحة الرئيسية مع تمرير userId
           Navigator.of(context).pushReplacementNamed(
             '/home',
             arguments: {'userId': _usernameController.text.trim()},
